@@ -6,10 +6,20 @@
             </div>
             <div>My shirt shop</div>
         </header>
-
+        <NavMenu />
         <router-view/>
     </div>
 </template>
+
+<script>
+import NavMenu from './NavMenu'
+
+export default {
+    components: {
+        NavMenu
+    }    
+}
+</script>
 
 <style lang="stylus">
 @import '../style/main';
