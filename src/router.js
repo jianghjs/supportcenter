@@ -2,10 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from './components/Home'
 import FQA from './components/FQA'
-import VueFetch from './plugins/fetch'
 
 Vue.use(VueRouter)
-Vue.use(VueFetch)
 
 const routes =[
     {

@@ -1,8 +1,7 @@
-import 'babel-polyfill'
 import Vue from 'vue'
 import AppLayout from './components/AppLayout'
 import router from './router'
-import './global-components'
+import "babel-polyfill"
 
 new Vue({
   el: '#app',
