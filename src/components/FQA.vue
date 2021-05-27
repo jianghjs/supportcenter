@@ -2,6 +2,8 @@
   <main class="fqa">
     <h1>Frenquently Asked Questions</h1>
 
+    <Loading v-if="loading"></Loading>
+
     <div class="error" v-if="error">
       Can't load the questions
     </div>
@@ -16,6 +18,8 @@
 </template>
 
 <script>
+import RemoteData from '../mixins/RemoteData'
+
 export default {
     data() {
         return {
@@ -24,6 +28,9 @@ export default {
             loading: false
         }
     },
+    mixins:[
+      RemoteData
+    ],
     // created () {
     //   fetch('http://localhost:3000/questions').then(response => {
     //     if (response.ok) {
@@ -38,16 +45,13 @@ export default {
     //   })
     // }
     async created () {
+      this.loading = true
       try {
-        const response = await fetch('http://localhost:3000/questions')
-        if (response.ok) {
-          this.questions = await response.json()
-        } else {
-          throw new Error('error')
-        }
+        this.questions = await this.$fetch('questions')
       } catch (e) {
         this.error = e
       }
+      this.loading = false
     }
 }
 </script>
